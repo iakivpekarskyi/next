@@ -1,6 +1,13 @@
 import type { Config } from 'tailwindcss';
 
-const config: Config = {
+const config: {
+  plugins: (plugin | ((options?: Partial<{ strategy: "base" | "class" }>) => { handler: () => void }))[];
+  theme: {
+    extend: { gridTemplateColumns: { "13": string }; colors: { blue: { 400: string; 500: string; 600: string } } };
+    keyframes: { shimmer: { "100%": { transform: string } } }
+  };
+  content: string[]
+} = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -13,7 +20,7 @@ const config: Config = {
       },
       colors: {
         blue: {
-          400: '#2589FE',
+          400: '#2549FE',
           500: '#0070F3',
           600: '#2F6FEB',
         },
